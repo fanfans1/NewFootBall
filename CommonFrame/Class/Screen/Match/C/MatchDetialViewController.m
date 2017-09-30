@@ -29,7 +29,7 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    WKWebView* webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 48)];
+    WKWebView* webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, kTabBarH, SCREEN_WIDTH, SCREEN_HEIGHT - kTabBarH - 48)];
     self.webView = webView;
     self.webView.navigationDelegate = self;
     self.webView.scrollView.bounces = NO;

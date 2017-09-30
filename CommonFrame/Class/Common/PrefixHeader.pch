@@ -43,10 +43,10 @@
 #import "WebServerViewController.h"
 
 
-#define IS_IPHONE_X (IS_IPHONE && SCREEN_MAX_LENGTH == 812.0)
-#define kTabBarH (IS_IPHONE_X ? 83 : 48)
-#define NAVIGATION_BAR_HEIGHT  (IS_IPHONE_X ? 84.0f : 64.0f)
-#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+//#define IS_IPHONE_X (SCREEN_WIDTH == 812.0)
+#define kTabBarH 64
+//#define NAVIGATION_BAR_HEIGHT  (IS_IPHONE_X ? 84.0f : 64.0f)
+//#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
 
 #pragma mark -
 #pragma mark ==============宏通知方法==============

@@ -26,7 +26,7 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 49 -40)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kTabBarH - 49 -40)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
@@ -53,7 +53,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     
-    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, -40, SCREEN_WIDTH , SCREEN_HEIGHT - 64 +40 - 49)];
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, -40, SCREEN_WIDTH , SCREEN_HEIGHT - kTabBarH +40 - 49)];
     _webView.delegate = self;
     
     self.webView.scrollView.bounces = NO;
@@ -90,11 +90,11 @@
         
         if ([str isEqualToString:@"https://m.hupu.com/soccer/csl/topscorers"] ||[str isEqualToString:@"https://m.hupu.com/soccer/epl/topscorers"] ||[str isEqualToString:@"https://m.hupu.com/soccer/laliga/topscorers"] ||[str isEqualToString:@"https://m.hupu.com/soccer/1bund/topscorers"] ||[str isEqualToString:@"https://m.hupu.com/soccer/seriea/topscorers"] ||[str isEqualToString:@"https://m.hupu.com/soccer/ucl/topscorers"] ||[str isEqualToString:@"https://m.hupu.com/soccer/ligue1/topscorers"] ) {
             
-            _webView.frame = CGRectMake(0, 0, SCREEN_WIDTH , SCREEN_HEIGHT - 64 - 49 - 40);
+            _webView.frame = CGRectMake(0, 0, SCREEN_WIDTH , SCREEN_HEIGHT - kTabBarH - 49 - 40);
             
             
         }else{
-            _webView.frame = CGRectMake(0, -40, SCREEN_WIDTH, SCREEN_HEIGHT - 64+ 40 - 49 - 40);
+            _webView.frame = CGRectMake(0, -40, SCREEN_WIDTH, SCREEN_HEIGHT - kTabBarH+ 40 - 49 - 40);
             
         }
     }

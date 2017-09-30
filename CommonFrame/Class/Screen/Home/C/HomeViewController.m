@@ -82,7 +82,7 @@
 
 - (YYTopTitleView *)titleView{
     if (!_titleView) {
-        _titleView = [[YYTopTitleView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, SCREEN_HEIGHT - 64 - 49)];
+        _titleView = [[YYTopTitleView alloc]initWithFrame:CGRectMake(0, kTabBarH, self.view.frame.size.width, SCREEN_HEIGHT - kTabBarH - 49)];
         _titleView.selectIndex = 0;
     }
     return _titleView;

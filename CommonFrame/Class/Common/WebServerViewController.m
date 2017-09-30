@@ -22,7 +22,7 @@
     [super viewDidLoad];
     [self.navigationController.navigationBar setBarTintColor: BACKGROUNDCOLOR];
     // Do any additional setup after loading the view.
-    WKWebView* webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    WKWebView* webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, kTabBarH, SCREEN_WIDTH, SCREEN_HEIGHT - kTabBarH)];
     self.webView = webView;
     self.webView.navigationDelegate = self;
    

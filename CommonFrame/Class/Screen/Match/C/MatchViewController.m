@@ -36,7 +36,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kTabBarH, SCREEN_WIDTH, SCREEN_HEIGHT - kTabBarH)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"NewTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];

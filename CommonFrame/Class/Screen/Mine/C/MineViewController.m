@@ -97,7 +97,7 @@
 //创建TableView
 -(void)createTableView{
     if (!_tableView) {
-        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT-64) style:UITableViewStylePlain];
+        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, kTabBarH, WIDTH, HEIGHT-kTabBarH) style:UITableViewStylePlain];
         _tableView.backgroundColor=[UIColor clearColor];
         _tableView.showsVerticalScrollIndicator=NO;
         _tableView.dataSource=self;
@@ -137,7 +137,7 @@
 -(HeadImageView *)headImageView{
     if (!_headImageView) {
         _headImageView=[[HeadImageView alloc]init];
-        _headImageView.frame=CGRectMake(0, 64, WIDTH, 170);
+        _headImageView.frame=CGRectMake(0, kTabBarH, WIDTH, 170);
         _headImageView.backgroundColor=[UIColor clearColor];
         
         
@@ -216,7 +216,7 @@
     }
 }
 -(void)createNav{
-    self.NavView=[[NavHeadTitleView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 64)];
+    self.NavView=[[NavHeadTitleView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, kTabBarH)];
     self.NavView.title=@"个人中心";
     self.NavView.color=[UIColor whiteColor];
 //    self.NavView.backTitleImage=@"Mail";
