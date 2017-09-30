@@ -52,13 +52,13 @@
     [but addTarget:self action:@selector(clickaddBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:but];
     
-    UIButton *zhuce =[[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width-60, 30, 50, 30)];
-    [zhuce setTitle:@"注册" forState:UIControlStateNormal];
-    [zhuce setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    //    zhuce.font=[UIFont systemFontOfSize:17];
-    [zhuce addTarget:self action:@selector(zhuce) forControlEvents:UIControlEventTouchUpInside];
-    //    [self.view addSubview:zhuce];
-    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc]  initWithCustomView:zhuce];
+//    UIButton *zhuce =[[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width-60, 30, 50, 30)];
+//    [zhuce setTitle:@"注册" forState:UIControlStateNormal];
+//    [zhuce setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    //    zhuce.font=[UIFont systemFontOfSize:17];
+//    [zhuce addTarget:self action:@selector(zhuce) forControlEvents:UIControlEventTouchUpInside];
+//    //    [self.view addSubview:zhuce];
+//    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc]  initWithCustomView:zhuce];
     
     UILabel *lanel=[[UILabel alloc]initWithFrame:CGRectMake((self.view.frame.size.width-30)/2, 30, 50, 30)];
     lanel.text=@"登录";

@@ -34,10 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    //    self.view.backgroundColor=[UIColor colorWithRed:240/255.0f green:240/255.0f blue:240/255.0f alpha:1];
-    //
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setBarTintColor: BACKGROUNDCOLOR];
     View=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     //View.backgroundColor=[UIColor redColor];
     View.image=[UIImage imageNamed:@"bg4.jpg"];
@@ -49,7 +47,6 @@
     lanel.textColor=[UIColor colorWithRed:248/255.0f green:144/255.0f blue:34/255.0f alpha:1];
     [self.view addSubview:lanel];
     //    self.navigationController.navigationBarHidden = NO;
-    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     self.view.backgroundColor=[UIColor colorWithRed:240/255.0f green:240/255.0f blue:240/255.0f alpha:1];
     UIButton *but =[[UIButton alloc]initWithFrame:CGRectMake(5, 27, 35, 35)];
     [but setImage:[UIImage imageNamed:@"goback_back_orange_on"] forState:UIControlStateNormal];
@@ -267,7 +264,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    //    self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.tabBar.hidden = YES;
 }
 

@@ -24,23 +24,23 @@
     // Do any additional setup after loading the view.
     [self.navigationController.navigationBar setBarTintColor: BACKGROUNDCOLOR];
     self.title = @"资讯";
-    
+    if (@available(iOS 11.0, *)) {
+       
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     WKWebView* webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 48)];
     self.webView = webView;
     self.webView.navigationDelegate = self;
     self.webView.scrollView.bounces = NO;
     self.webView.scrollView.bouncesZoom = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    self.webView.UIDelegate = self;
     [self setWashWeb];
     [self.view addSubview:webView];
     [_webView setAllowsBackForwardNavigationGestures:true];
-    //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(Back)];
-    
-    
-    
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_WIDTH - 48, SCREEN_HEIGHT, 48)];
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 48, SCREEN_WIDTH, 48)];
     view.backgroundColor = [UIColor whiteColor];
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -110,7 +110,6 @@
     [self.mb remove];
     _webView.hidden = NO;
 }
-
 
 
 - (void)viewWillAppear:(BOOL)animated{

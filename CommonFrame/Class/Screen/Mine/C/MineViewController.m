@@ -12,6 +12,7 @@
 #import "HeadLineView.h"
 #import "MMZCViewController.h"
 #import "MineNextViewController.h"
+#import "MMZCHMViewController.h"
 
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -40,6 +41,8 @@
 @property(nonatomic,assign)NSInteger currentIndex;
 @property(nonatomic,assign)int rowHeight;
 @property(nonatomic,strong)UITableView *tableView;
+@property (nonatomic, retain)UIButton *login;
+@property (nonatomic, retain)UIButton *regist;
 
 @end
 
@@ -50,6 +53,16 @@
     if (_nickLabel) {
         
         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        if ([[user objectForKey:@"login"] isEqualToString:@"登录"]) {
+            _login.hidden = NO;
+            _regist.hidden = NO;
+            _nickLabel.hidden = YES;
+//            _nickLabel.text = [user objectForKey:@"login"];
+        }else{
+            _login.hidden = YES;
+            _regist.hidden = YES;
+            _nickLabel.hidden = NO;
+        }
         _nickLabel.text = [user objectForKey:@"login"];
     }
     self.navigationController.navigationBar.hidden = YES;
@@ -127,12 +140,16 @@
         _headImageView.frame=CGRectMake(0, 64, WIDTH, 170);
         _headImageView.backgroundColor=[UIColor clearColor];
         
+        
+        
         //_headImageView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"个人页背景图.png"]];
         
         _headerImg=[[UIImageView alloc]initWithFrame:CGRectMake(WIDTH/2-35, 50, 70, 70)];
         _headerImg.center=CGPointMake(WIDTH/2, 70);
         [_headerImg setImage:[UIImage imageNamed:@"zrx7.jpg"]];
         [_headerImg.layer setMasksToBounds:YES];
+        
+    
         [_headerImg.layer setCornerRadius:35];
         _headerImg.backgroundColor=[UIColor whiteColor];
         _headerImg.userInteractionEnabled=YES;
@@ -144,7 +161,7 @@
         _nickLabel.center=CGPointMake(WIDTH/2, 125);
 //        _nickLabel.text=@"登录";
         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-        _nickLabel.text = [user objectForKey:@"login"];
+//        _nickLabel.text = [user objectForKey:@"login"];
         //        _nickLabel.font=JXFont(14);
         _nickLabel.textColor=[UIColor whiteColor];
         _nickLabel.textAlignment=NSTextAlignmentCenter;
@@ -152,13 +169,44 @@
         [_nickLabel addGestureRecognizer: taps];
         _headerImg.userInteractionEnabled = YES;
         [_headImageView addSubview:_nickLabel];
+    
+        
+        if ([[user objectForKey:@"login"] isEqualToString:@"登录"]) {
+            
+      
+            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.frame =CGRectMake(SCREEN_WIDTH/2 + 10, 125, 90, 30);
+            [btn setTitle:@"注册" forState:UIControlStateNormal];
+            
+            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [_headImageView addSubview: btn];
+            [btn addTarget:self action:@selector(regists) forControlEvents:UIControlEventTouchUpInside];
+            self.regist = btn;
+            
+            
+            UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn1.frame =CGRectMake(SCREEN_WIDTH/2 - 100, 125, 90, 30);
+            [btn1 setTitle:@"登录" forState:UIControlStateNormal];
+            
+            [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [_headImageView addSubview: btn1];
+            [btn1 addTarget:self action:@selector(fixClick) forControlEvents:UIControlEventTouchUpInside];
+            self.login = btn1;
+            
+            _nickLabel.hidden = YES;
+          }
     }
     return _headImageView;
 }
-//头像点击事件
--(void)tapClick:(UITapGestureRecognizer *)recognizer{
-//    NSLog(@"你打到我的头了");
+
+
+- (void)regists{
+    MMZCHMViewController *zc = [[MMZCHMViewController alloc] init];
+    [self.navigationController pushViewController:zc animated:YES];
+    
+
 }
+
 //修改昵称
 -(void)fixClick{
     if ([_nickLabel.text isEqualToString: @"登录"]) {
@@ -182,11 +230,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < 4) {
-        return 64;
-    }else{
-        return 80;
-    }
+    return 64;
     
 }
 
@@ -199,21 +243,21 @@
 {
      if (indexPath.row == 0){
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-        cell.selectionStyle = UITableViewCellStyleValue1;
+        
         cell.textLabel.text = @"我的简介";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return  cell;
     }else if (indexPath.row == 1){
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-        cell.selectionStyle = UITableViewCellStyleValue1;
+   
         cell.textLabel.text = @"联系我们";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return  cell;
     }else if (indexPath.row == 2){
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-        cell.selectionStyle = UITableViewCellStyleValue1;
+       
         cell.textLabel.text = @"评价我们";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -221,27 +265,21 @@
     }else if (indexPath.row == 3){
         
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-        cell.selectionStyle = UITableViewCellStyleValue1;
+   
         cell.textLabel.text = @"意见反馈";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return  cell;
     }else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
-            UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-            btn.frame = RECTMACK(20, 15, 374, 50);
-            [btn setTitle:@"退出登录" forState:UIControlStateNormal];
-            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            btn.layer.masksToBounds = YES;
-            btn.layer.cornerRadius = 5;
-            btn.backgroundColor = BACKGROUNDCOLOR;
-            [btn addTarget:self action:@selector(ResignLogin) forControlEvents:UIControlEventTouchUpInside];
-            [cell addSubview: btn];
-        }
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+        cell.textLabel.text = @"版本号";
+        cell.detailTextLabel.text = app_Version;
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return  cell;
+    
     }
 
     
@@ -260,30 +298,6 @@
     }
     
     
-}
-
-
-- (void)ResignLogin{
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    if ([[user objectForKey:@"login"] isEqualToString:@"登录"]) {
-        ALERT(@"请登录！");
-        return;
-    }
-    UIAlertController *alertControllera = [UIAlertController alertControllerWithTitle:@"退出登录" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertControllera addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        
-        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-        [user setObject:@"登录" forKey:@"login"];
-        _nickLabel.text = @"登录";
-        
-    }]];
-    [alertControllera addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        
-    }]];
-    [self presentViewController:alertControllera animated:YES completion:nil];
-    //    ALERT(@"取消登录");
 }
 
 

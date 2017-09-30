@@ -9,7 +9,7 @@
 #import "MatchViewController.h"
 #import "NewModel.h"
 #import "NewTableViewCell.h"
-
+#import "MatchDetialViewController.h"
 
 
 @interface MatchViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -29,6 +29,12 @@
     [self.navigationController.navigationBar setBarTintColor: BACKGROUNDCOLOR];
  
     self.marr = [NSMutableArray array];
+    
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
     self.tableView.delegate = self;
@@ -84,7 +90,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    WebServerViewController *web = [[WebServerViewController alloc] init];
+    MatchDetialViewController   *web = [[MatchDetialViewController alloc] init];
     NewModel *model = self.marr [indexPath.row];
     web.url = model.origin_url;
     [self.navigationController pushViewController:web animated:YES];
