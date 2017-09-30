@@ -72,7 +72,7 @@
     UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30, 75, self.view.frame.size.width-90, 30)];
     label.text=@"请输入您的手机号码";
     label.textColor=[UIColor grayColor];
-    label.textAlignment=UITextAlignmentLeft;
+    label.textAlignment= NSTextAlignmentLeft;
     label.font=[UIFont systemFontOfSize:13];
     
     [self.view addSubview:label];
@@ -101,13 +101,13 @@
     UILabel *phonelabel=[[UILabel alloc]initWithFrame:CGRectMake(20, 12, 50, 25)];
     phonelabel.text=@"手机号";
     phonelabel.textColor=[UIColor blackColor];
-    phonelabel.textAlignment=UITextAlignmentLeft;
+    phonelabel.textAlignment=NSTextAlignmentLeft;
     phonelabel.font=[UIFont systemFontOfSize:14];
     
     UILabel *codelabel=[[UILabel alloc]initWithFrame:CGRectMake(20, 62, 50, 25)];
     codelabel.text=@"验证码";
     codelabel.textColor=[UIColor blackColor];
-    codelabel.textAlignment=UITextAlignmentLeft;
+    codelabel.textAlignment=NSTextAlignmentLeft;
     codelabel.font=[UIFont systemFontOfSize:14];
     
     
@@ -116,7 +116,7 @@
     //yzButton.backgroundColor=[UIColor colorWithRed:240/255.0f green:240/255.0f blue:240/255.0f alpha:1];
     [yzButton setTitle:@"获取验证码" forState:UIControlStateNormal];
     [yzButton setTitleColor:[UIColor colorWithRed:248/255.0f green:144/255.0f blue:34/255.0f alpha:1] forState:UIControlStateNormal];
-    yzButton.font=[UIFont systemFontOfSize:13];
+    yzButton.titleLabel.font = FONT(13);
     [yzButton addTarget:self action:@selector(getValidCode:) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:yzButton];
     
@@ -167,7 +167,7 @@
         yzButton.userInteractionEnabled = YES;
         [self.timer invalidate];
     } else {
-        NSString *str = [NSString stringWithFormat:@"%lu秒后重新获取", self.timeCount];
+        NSString *str = [NSString stringWithFormat:@"%ld秒后重新获取", self.timeCount];
         [yzButton setTitle:str forState:UIControlStateNormal];
         yzButton.userInteractionEnabled = NO;
         

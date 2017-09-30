@@ -315,7 +315,7 @@
     if (number.length<countHiiden) {
         return number;
     }
-    NSString *xings=@"";
+//    NSString *xings=@"";
     for (int i=0; i<1; i++) {
         //xings=[NSString stringWithFormat:@"%@",[CheckTools getUser]];
     }

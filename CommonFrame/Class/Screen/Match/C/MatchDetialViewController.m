@@ -57,7 +57,7 @@
     [btn1 setImage:[UIImage imageNamed:@"webRefresh.png"] forState:UIControlStateNormal];
     [view addSubview: btn1];
     //    btn1.backgroundColor = BACKGROUNDCOLOR;
-    [btn1 addTarget:self action:@selector(setWashWeb) forControlEvents:UIControlEventTouchUpInside];
+    [btn1 addTarget:self action:@selector(refreshs) forControlEvents:UIControlEventTouchUpInside];
     
     
     
@@ -81,6 +81,9 @@
     [_webView goForward];
 }
 
+- (void)refreshs{
+    [_webView reload];
+}
 
 
 - (void)setWashWeb{
